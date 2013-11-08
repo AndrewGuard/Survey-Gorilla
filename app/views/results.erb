@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Results for <%= @survey.title %></h1>
+  <ul>
+    <% @questions.each do |question| %>
+      <li><%= question.prompt %></li>
+      <ul>
+        <% question.possible_choices.each do |possible_choice| %>
+          <li><%= possible_choice.text %> --- <%= @all_responses_hash.fetch(possible_choice.id, []).length %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </ul>
+</div>

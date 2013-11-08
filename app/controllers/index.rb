@@ -7,34 +7,32 @@ end
 # Log in an existing user
 post '/login' do
   # Lookup user
-  # user = User.find_by_email(params[:email])
-  # if user
-  #   user.authenticate(params[:password])
-  #   if user
-  #     # add user_id to session
-  #     #redirect to '/user/:id'
-  #   else
-  #     @error = "Try again"
-  #     redirect to '/'
-  #   end
-  # end
-
+  user = User.find_by_email(params[:email])
+  if user
+    user.authenticate(params[:password])
+    if user
+      session[:id] = user.id
+      redirect to "/user/#{user.id}"
+    else
+      @error = "Invalid Login"
+      erb :index
+    end
+  end
 end
 
 # Create a new user
-post '/create_acccount' do
-
-#   user = User.create(etc.)
-#   if user.valid?
-#     user.authenticate(params[:password])
-#     if user
-#       # add user_id to session
-#       #redirect to '/user/:id'
-#     else
-#       @error = "Try again"
-#       redirect to '/'
-#     end
-#   end
+post '/create_account' do
+  user = User.create(name: params[:name], email: params[:email], password: params[:password])
+  if user.valid?
+    user.authenticate(params[:password])
+    if user
+      # add user_id to session
+      #redirect to '/user/:id'
+    else
+      @error = "Try again"
+      redirect to '/'
+    end
+  end
 
 # end
 # # add user to session

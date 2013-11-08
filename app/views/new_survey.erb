@@ -1,10 +1,10 @@
 <h2>Create a Survey</h2>
 <div class="container">
-  <form action="/suveys/new" method="POST" enctype="multipart/form-data">
+  <form action="/surveys/new" method="POST" enctype="multipart/form-data">
     Survey Title:<input type="text" name="survey_title"><br>
-    Image(optional):<input type=type="file" name="image_file_name"><br>
+    Image(optional):<input type="file" name="image_file_name"><br><br>
     <div id="question_0">
-      Question Prompt: <input type="text" name="question_0_text" >
+      Question Prompt: <input type="text" name="question_0_text" ><br>
       Possible responses(1 per line): <textarea rows="4" cols="50" name="question_0_possible_responses">
     </textarea><br>
     </div><br>
@@ -15,3 +15,10 @@
     <input type="submit" value="Add Question">
   </form>
 </div>
+
+<!-- <div class="container">
+<form action="/surveys/new" method="POST" enctype="multipart/form-data">
+  Image(optional):<input type="file" name="image_file_name"><br><br>
+<input type="submit" value="Create Survey">
+</form>
+  </div> -->

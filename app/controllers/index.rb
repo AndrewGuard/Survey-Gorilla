@@ -55,26 +55,6 @@ get '/user/:id' do
   # @all_surveys = all surveys
 end
 
-# Display a list of all surveys
-get '/surveys' do
-  # display a list of links to all surveys
-end
-
-# Display the stats about a given survey
-get '/surveys/:id/results' do
-  # display a page with charts showing user responses for the given survey
-end
-
-# Display a page for the user to take a survey
-get '/surveys/:id' do
-
-end
-
-# Save the user's responses to the survey
-post '/surveys/:id' do
-
-end
-
 
 
 

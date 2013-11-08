@@ -14,29 +14,25 @@ post '/login' do
       session[:id] = user.id
       redirect to "/user/#{user.id}"
     else
-      @error = "Invalid Login"
+      @errors = "Password incorrect"
       erb :index
     end
+  else
+    @errors = "Email not found, please create an account"
+    erb :index
   end
 end
 
 # Create a new user
 post '/create_account' do
   user = User.create(name: params[:name], email: params[:email], password: params[:password])
-  if user.valid?
-    user.authenticate(params[:password])
-    if user
-      # add user_id to session
-      #redirect to '/user/:id'
-    else
-      @error = "Try again"
-      redirect to '/'
-    end
+  if user.id
+    session[:id] = user.id
+    redirect to "/user/#{user.id}"
+  else
+    @errors = user.errors.full_messages
+    erb :index
   end
-
-# end
-# # add user to session
-# #redirect to '/user/:id'
 end
 
 get '/logout' do
@@ -47,10 +43,10 @@ end
 
 # Display home page of logged in user
 get '/user/:id' do
+  @user = User.find(params[:id])
+  @created_surveys = @user.created_surveys
   #display a page with buttons and/or links to create a survey or take a survey
-
-  # @my_created_surveys = all surveys created by this user
-  # @all_surveys = all surveys
+  erb :user
 end
 
 

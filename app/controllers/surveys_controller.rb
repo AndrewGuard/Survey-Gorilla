@@ -18,6 +18,24 @@ end
 
 # Display the stats about a given survey
 get '/surveys/:id/results' do
+  @survey = Survey.find(params[:id])
+  # returns a survey object
+  @questions = @survey.questions
+  # returns an array of that survey's questions
+
+  completed_surveys = CompletedSurvey.where("survey_id = ?", params[:id])
+  #returns an array of completed survey objects for this survey
+  @all_responses = []
+  # empty container to hold all response objects
+
+  # go through each completed surveys for this survey
+  completed_surveys.each do |completed_survey|
+    # get responses for each completed survey and throw into container
+    @all_responses += completed_survey.responses
+  end
+
+  
+
   # display a page with charts showing user responses for the given survey
 end
 

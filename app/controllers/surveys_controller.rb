@@ -47,7 +47,15 @@ end
 
 # Display the stats about a given survey
 get '/surveys/:id/results' do
-  # display a page with charts showing user responses for the given survey
+  @survey = CreatedSurvey.find(params[:id])
+  @questions = @survey.questions
+  completed_surveys = CompletedSurvey.where("created_survey_id = ?", params[:id])
+  all_responses = []
+  completed_surveys.each do |completed_survey|
+    all_responses += completed_survey.responses
+  end
+  @all_responses_hash = all_responses.group_by { |response| response.possible_choice_id }
+  erb :results
 end
 
 # Display a page for the user to take a survey

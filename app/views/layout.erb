@@ -18,6 +18,12 @@
   <title></title>
 </head>
 <body>
+    <div id="navbar">
+      <a id="float_left" href="/">Survey Gorilla</a>
+      <% if !session[:id].nil? %>
+        <a href="/logout">Logout</a>
+      <% end %>
+    </div>
   <%= yield %>
 </body>
 </html>

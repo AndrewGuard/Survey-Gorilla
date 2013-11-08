@@ -1,0 +1,17 @@
+<div class="container">
+  <a href="/surveys/new">Create a new survey </a>
+  <br>
+  <a href="/surveys">Take a survey </a>
+
+
+</div>
+
+<div class="container">
+  <% @created_surveys.each do |survey|%>
+  <ul>
+    <li>
+      <a href="/surveys/<%= survey.id %>/results"> <%= survey.title %></a>
+    </li>
+  </ul>
+  <% end %>
+</div>

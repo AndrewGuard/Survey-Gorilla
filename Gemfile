@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+
+
 # PostgreSQL driver
 gem 'pg'
 
@@ -10,6 +12,7 @@ gem 'sinatra-contrib'
 # Use Thin for our web server
 gem 'thin'
 gem 'carrierwave'
+gem 'mini_magick'
 
 gem 'activerecord', '~>3.2.0'
 gem 'activesupport', '~>3.2.0'

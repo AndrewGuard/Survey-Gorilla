@@ -1,24 +1,24 @@
-<h2>Create a Survey</h2>
 <div class="container">
+  <h1 class = "centered white-outline">Create a Survey</h1>
   <form action="/surveys/new" method="POST" enctype="multipart/form-data">
-    Survey Title:<input type="text" name="survey_title"><br>
-    Image(optional):<input type="file" name="image_file_name"><br><br>
+    <p class="text-20px">Survey Title:<input type="text" name="survey_title"></p>
+    <p class="text-20px"> Image(optional):<input type="file" name="image_file_name"></p>
     <div id="questions-box">
       <div id="first-question">
         <div class="question">
-          Question Prompt: <input type="text" name= "question[][text]"><br>
-          Possible responses(1 per line): <textarea rows="4" cols="50" name="question[][possible_responses]">
-        </textarea><br>
+          <p class="text-20px">Question Prompt: <input type="text" name= "question[][text]"></p>
+          <p class="text-20px">Possible responses(1 per line): <textarea rows="4" cols="50" name="question[][possible_responses]">
+        </textarea></p><br>
       </div><br>
     </div>
   </div>
-  <input type="submit" value="Create Survey" id="create_survey_button">
+  <input type="submit" value="Create Survey" id="create_survey_button" class="margin-5px">
 </form>
 
 <form action="/question/new" method="POST">
-  <input type="submit" value="Add Question" id="add_question_button">
+  <input type="submit" value="Add Question" id="add_question_button" class="margin-5px">
 </form>
 <form action="/question/remove" method="POST">
-  <input type="submit" value="Remove Last Question" id="remove_question_button">
+  <input type="submit" value="Remove Last Question" id="remove_question_button" class="margin-5px">
 </form>
 </div>

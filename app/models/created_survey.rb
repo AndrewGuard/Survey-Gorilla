@@ -1,3 +1,4 @@
+require_relative "../../lib/uploaders/photo_uploader.rb"
 class CreatedSurvey < ActiveRecord::Base
   # Remember to create a migration!
   belongs_to :user

@@ -1,33 +1,182 @@
+/*background image*/
+
+
 .container {
   margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
+  /*background-color: rgba(34, 137, 72, 0.71); */
+  background-color: rgba(48, 97, 8, 0.62);
+    // #228948
+  // #306108
+  border: 3px solid black;
+  border-radius: 15px;
 }
+
+body {
+  background-image: url('http://i.imgur.com/CduyK.jpg') ;
+  background-size: 45%;
+}
+
+/*html{
+        background: url('http://i.imgur.com/CduyK.jpg')no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+}*/
+
+
+/*Standard container*/
+
+/*.container {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+  border: 1px solid black;
+  background-color: white;
+}*/
 
 th {
   text-align: left;
 }
 
+/*Navbar styling*/
+
 #navbar {
   background-color: black;
   padding: 10px;
-  text-align: right;
 }
 
 
 #navbar a {
   background-color: black;
   text-decoration: none;
-  color: white;
+
 }
 
 #navbar a:hover {
  color: yellow;
 }
 
-#float_left {
+#align_left {
   text-align: left;
+  color: #306108;
+    font-weight: bold;
+    font-size:150%;
+}
+#float_right {
+  float:right;
+  color: #306108;
+  font-weight: bold;
+}
+
+/*CreatedSurvey Image resize*/
+
+.survey-image {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+/*Login & create account buttons*/
+.padded-bottom-left {
+  margin-bottom: 15px;
+  margin-left: 28px;
+}
+
+.login_button {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f9f9f9), color-stop(1, #e9e9e9) );
+  background:-moz-linear-gradient( center top, #f9f9f9 5%, #e9e9e9 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#e9e9e9');
+  background-color:#f9f9f9;
+  -webkit-border-top-left-radius:0px;
+  -moz-border-radius-topleft:0px;
+  border-top-left-radius:0px;
+  -webkit-border-top-right-radius:0px;
+  -moz-border-radius-topright:0px;
+  border-top-right-radius:0px;
+  -webkit-border-bottom-right-radius:0px;
+  -moz-border-radius-bottomright:0px;
+  border-bottom-right-radius:0px;
+  -webkit-border-bottom-left-radius:0px;
+  -moz-border-radius-bottomleft:0px;
+  border-bottom-left-radius:0px;
+  text-indent:0;
+  border:1px solid #dcdcdc;
+  display:inline-block;
+  color:#666666;
+  font-family:Comic Sans MS;
+  font-size:15px;
+  font-weight:bold;
+  font-style:normal;
+  height:65px;
+  line-height:65px;
+  width:90%;
+  text-decoration:none;
+  text-align:center;
+  text-shadow:1px 1px 0px #ffffff;
+   border-radius: 5px;
+}
+
+.text-26px {
+  font-size: 26px;
+}
+
+.text-20px {
+  font-size: 20px;
+}
+.text-16px {
+  font-size: 16px;
+}
+.margin-5px {
+  margin: 5px;
+}
+
+.list-without-dots {
+  list-style-type: none;
+}
+
+.login_button:hover {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #f9f9f9) );
+  background:-moz-linear-gradient( center top, #e9e9e9 5%, #f9f9f9 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9');
+  background-color:#e9e9e9;
+}
+
+.login_button:active {
+  position:relative;
+  top:1px;
+}
+/* Home Page Styling*/
+
+.centered {
+  text-align: center;
+}
+.top-margin {
+  margin-top: 20px;
+}
+/*inline block for login/create account field*/
+.display_inline {
+  display:inline-block;
+  vertical-align: top;
+  width: 215px;
+  height: 84px;
+  margin-left: 105px;
+}
+
+/*inline block for login field*/
+.display_inline_button {
+  display:inline-block;
+  vertical-align: top;
+  width: 215px;
+  height: 84px;
+  padding-left: 50px;
+  padding-top: 16px;
+}
+
+.bold_heading {
+  font-weight: bold;
 }
 
 .prompt {
@@ -79,7 +228,7 @@ th {
 */
 /*.bar-key {
   width: 100px;
-  background-color:yellow; 
+  background-color:yellow;
 }*/
 
 .bar {
@@ -88,3 +237,4 @@ th {
   width: 100px;
   vertical-align: middle;
 }
+>>>>>>> 5c97c70dc75b409fb50e9b0595724a653c8ffa41

@@ -21,7 +21,7 @@ post '/surveys/new' do
     image_path = params[:image_file_name]
 
     unless image_path.nil? || image_path == ""
-      File.open("" + image_path[:filename], "w") do |f|
+      File.open("public/images/" + image_path[:filename], "w") do |f|
         f.write(image_path[:tempfile].read)
       end
 

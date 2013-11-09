@@ -2,7 +2,7 @@
   <h1><%= @survey.title %></h1>
     <p><%= @survey.image_file_name.inspect %>
       <% if @survey.image_file_name %>
-      <img src="/<%= @survey.image_file_name %>">
+      <img src="<%= @survey.image_file_name %>">
       <% end %>
       
     <form action="/surveys/<%= @survey.id %>" method="post">
@@ -12,8 +12,7 @@
         <li><%=question.prompt %></li>
         <ul>
           <% question.possible_choices.each do |choice| %>
-          <input type="radio" name="choices[]" value="<%= choice.id %>"><%= choice.text %><br>
-          <input type="hidden" name="question_ids[]" value="<%= question.id %>">
+          <input type="radio" name="choices[][<%= question.id %>]" value="<%= choice.id %>"><%= choice.text %><br>
           <% end %>
         </ul>
         <% end %>

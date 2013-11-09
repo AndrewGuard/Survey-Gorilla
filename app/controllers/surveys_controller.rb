@@ -74,6 +74,8 @@ get '/surveys/:id/results' do
     all_responses += completed_survey.responses
   end
   @all_responses_hash = all_responses.group_by { |response| response.possible_choice_id }
+  # @all_responses_hash = all_responses.group_by { |response| response.question_id }
+
   erb :results
 end
 
@@ -89,12 +91,10 @@ end
 post '/surveys/:id' do
   completed_survey = CompletedSurvey.create(user_id: session[:user_id], created_survey_id: params[:id])
 
-  choices = params[:choices]
-  questions = params[:question_ids]
-  selections = questions.zip(choices)
+  choices_hash = params[:choices].first
 
-  selections.each do |selection|
-    completed_survey.responses.create(question_id: selection[0], possible_choice_id: selection[1])
+  choices_hash.each_pair do |question_id, choice_id|
+    completed_survey.responses.create(question_id: question_id, possible_choice_id: choice_id)
   end
 
   redirect "user/#{session[:user_id]}"

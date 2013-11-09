@@ -42,7 +42,8 @@ end
 
 # Display a list of all surveys
 get '/surveys' do
-  # display a list of links to all surveys
+  @surveys = CreatedSurvey.all
+  erb :surveys
 end
 
 # Display the stats about a given survey
@@ -60,10 +61,23 @@ end
 
 # Display a page for the user to take a survey
 get '/surveys/:id' do
+  @survey = CreatedSurvey.find(params[:id])
+  @questions = @survey.questions
 
+  erb :show
 end
 
 # Save the user's responses to the survey
 post '/surveys/:id' do
+  completed_survey = CompletedSurvey.create(user_id: session[:user_id], created_survey_id: params[:id])
 
+  choices = params[:choices]
+  questions = params[:question_ids]
+  selections = questions.zip(choices)
+
+  selections.each do |selection|
+    completed_survey.responses.create(question_id: selection[0], possible_choice_id: selection[1])
+  end
+
+  redirect "user/#{session[:user_id]}"
 end

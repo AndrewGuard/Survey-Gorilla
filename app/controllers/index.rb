@@ -11,7 +11,7 @@ post '/login' do
   if user
     user.authenticate(params[:password])
     if user
-      session[:id] = user.id
+      session[:user_id] = user.id
       redirect to "/user/#{user.id}"
     else
       @errors = "Password incorrect"
@@ -27,7 +27,7 @@ end
 post '/create_account' do
   user = User.create(name: params[:name], email: params[:email], password: params[:password])
   if user.id
-    session[:id] = user.id
+    session[:user_id] = user.id
     redirect to "/user/#{user.id}"
   else
     @errors = user.errors.full_messages

@@ -137,10 +137,6 @@ th {
   list-style-type: none;
 }
 
-/*.white-outline {
-  text
-}*/
-
 .login_button:hover {
   background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #f9f9f9) );
   background:-moz-linear-gradient( center top, #e9e9e9 5%, #f9f9f9 100% );
@@ -182,3 +178,63 @@ th {
 .bold_heading {
   font-weight: bold;
 }
+
+.prompt {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/*.graph {
+  margin: 20px auto;
+  height: 200px;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.graph-bar {
+  display: inline-block;
+  position: relative;
+  background-color: #aeaeae;
+  vertical-align: baseline;
+}*/
+
+.graph-area {
+  width: 598px;
+/*  height: 300px;*/
+  background-color: #eaeaea;
+  border: solid black;
+}
+
+./*bar-area-outer {
+  width: 598px;
+  background-color: pink;
+  line-height: 20px;
+  display: table-cell;
+  vertical-align: middle;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.bar-area-inner {
+  height: auto;
+  width: 498px;
+  background-color: blue;
+  margin-left: 100px;
+  vertical-align: middle;
+}
+*/
+/*.bar-key {
+  width: 100px;
+  background-color:yellow;
+}*/
+
+.bar {
+  height: 20px;
+  background-color: blue;
+  width: 100px;
+  vertical-align: middle;
+}
+>>>>>>> 5c97c70dc75b409fb50e9b0595724a653c8ffa41

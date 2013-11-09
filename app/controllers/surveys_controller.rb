@@ -56,6 +56,8 @@ get '/surveys/:id/results' do
     all_responses += completed_survey.responses
   end
   @all_responses_hash = all_responses.group_by { |response| response.possible_choice_id }
+  @all_responses_hash = all_responses.group_by { |response| response.question_id }
+
   erb :results
 end
 

@@ -12,7 +12,7 @@
         <li><%=question.prompt %></li>
         <ul>
           <% question.possible_choices.each do |choice| %>
-          <input type="radio" name="choices[]" value="<%= choice.id %>"><%= choice.text %><br>
+          <input type="checkbox" name="choices[]" value="<%= choice.id %>"><%= choice.text %><br>
           <input type="hidden" name="question_ids[]" value="<%= question.id %>">
           <% end %>
         </ul>

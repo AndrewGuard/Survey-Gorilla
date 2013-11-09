@@ -22,7 +22,7 @@
 
             <% width_factor = 0 if num_responses_for_choice == 0%>
 
-            <div style="background-color: #6E8B3D; width: <%= width_factor %>%; height: 20px"class="bar">
+            <div id="<%= possible_choice.id %>" style="background-color: #6E8B3D; height: 20px; width: 0px" data-width="<%= width_factor %>%" class="bar">
                <%= num_responses_for_choice %>
             </div>
           </td>

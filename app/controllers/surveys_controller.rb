@@ -28,19 +28,31 @@ post '/surveys/new' do
       file_name = image_path[:filename]
     end
 
-    question_prompt = params[:question_0_text]
-    question_possible_choices_str = params[:question_0_possible_responses]
-    question_possible_choices = question_possible_choices_str.split("\n")
+    # original
+    # question_prompt = params[:question_0_text]
+    # question_possible_choices_str = params[:question_0_possible_responses]
+    # question_possible_choices = question_possible_choices_str.split("\n")
 
     new_created_survey = @current_user.created_surveys.create(:title => survey_title, :image_file_name => file_name)
-    new_question = Question.new(:prompt => question_prompt)
+    # new_question = Question.new(:prompt => question_prompt)
 
-    question_possible_choices.each do |choice|
-      new_possible_choice = PossibleChoice.new(:text => choice.strip)
-      new_question.possible_choices << new_possible_choice
+    # question_possible_choices.each do |choice|
+    #   new_possible_choice = PossibleChoice.new(:text => choice.strip)
+    #   new_question.possible_choices << new_possible_choice
+    # end
+    # new_created_survey.questions << new_question
+    # new_created_survey.save
+
+
+    # "psuedocode"
+    params[:question].each do |params_question|
+      question = new_created_survey.questions.create(:prompt => params_question[:text])
+
+      params_question[:possible_responses].split("\n").each do |possible_response|
+        question.possible_choices.create(:text => possible_response)
+      end
     end
-    new_created_survey.questions << new_question
-    new_created_survey.save
+
 
     redirect to "/user/#{session[:user_id]}"
   end

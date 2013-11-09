@@ -29,3 +29,8 @@ th {
 #float_left {
   text-align: left;
 }
+
+.survey-image {
+  max-width: 200px;
+  max-height: 200px;
+}

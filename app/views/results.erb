@@ -20,9 +20,7 @@
             <% num_responses_for_choice = @all_responses_by_choice.fetch(possible_choice.id, []).length %>
             <% width_factor = (num_responses_for_choice.to_f/num_response_for_question.to_f)* 100.0 %>
             <div style="background-color: #6E8B3D; width: <%= width_factor %>%; height: 20px"class="bar">
-              <p style="color: black;">
                <%= num_responses_for_choice %>
-              </p>
             </div>
           </td>
         </tr>

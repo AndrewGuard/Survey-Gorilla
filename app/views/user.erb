@@ -1,17 +1,17 @@
 <div class="container">
-  <a href="/surveys/new">Create a new survey </a>
+  <a href="/surveys/new" class="login_button padded-bottom-left top-margin">Create a new survey </a>
   <br>
-  <a href="/surveys">Take a survey </a>
-
-
+  <a href="/surveys" class="login_button padded-bottom-left">Take a survey </a>
 </div>
 
+
+<% if @created_surveys != [] %>
 <div class="container">
+  <h2 class="centered">Surveys You Created</h2>
   <% @created_surveys.each do |survey|%>
-  <ul>
-    <li>
-      <a href="/surveys/<%= survey.id %>/results"> <%= survey.title %></a>
-    </li>
-  </ul>
+
+    <a href="/surveys/<%= survey.id %>/results" class="login_button padded-bottom-left top-margin"> <%= survey.title %></a>
+
+  <% end %>
   <% end %>
 </div>

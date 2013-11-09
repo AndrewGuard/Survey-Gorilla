@@ -1,19 +1,20 @@
 <div class="container">
-  <h1><%= @survey.title %></h1>
+  <h1 class="centered"><%= @survey.title %></h1>
       <% if @survey.image_file_name %>
       <img src="/images/<%= @survey.image_file_name %>" class="survey-image">
       <% end %>
 
     <form action="/surveys/<%= @survey.id %>" method="post">
 
-      <ul>
+      <ul class="list-without-dots text-20px">
         <% @questions.each do |question| %>
-        <li><%=question.prompt %></li>
+        <li class="text-26px"><%=question.prompt %></li>
         <ul>
           <% question.possible_choices.each do |choice| %>
-          <input type="radio" name="choices[][<%= question.id %>]" value="<%= choice.id %>"><%= choice.text %><br>
+          <input type="radio" name="choices[][<%= question.id %>]" value="<%= choice.id %>"><%= " " +  choice.text %><br><br>
           <% end %>
         </ul>
+        <br>
         <% end %>
       </ul>
       <input type="submit">

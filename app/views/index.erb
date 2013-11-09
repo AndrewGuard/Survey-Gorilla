@@ -1,22 +1,35 @@
 <div class="container">
-  <span>Login</span>
-  <form action="/login" method="post">
-    <input type="text" name="email" placeholder="Email"><br>
-    <input type="password" name="password" placeholder="Password"><br>
-    <input type="submit" value="Login">
-  </form>
+  <h1 class="centered">Welcome to Survey Gorilla</h1>
+  <div class="display_inline">
+    <span class="bold_heading">Login</span>
+    <form action="/login" method="post">
+      <input type="text" name="email" placeholder="Email"><br>
+      <input type="password" name="password" placeholder="Password"><br>
+      <br>
+    </div>
+    <div class="display_inline_button">
+      <input type="submit" value="Login" class="login_button">
+    </form>
+  </div>
   <br>
-  <span>Create an Account</span>
-  <form action="/create_account" method="post">
-    <input type="text" name="name" placeholder="Name"><br>
-    <input type="text" name="email" placeholder="Email"><br>
-    <input type="password" name="password" placeholder="Password"><br>
-    <input type="submit" value="Create">
+
+  <div class="display_inline">
+    <span class="bold_heading">Create an Account</span>
+    <form action="/create_account" method="post">
+      <input type="text" name="name" placeholder="Name"><br>
+      <input type="text" name="email" placeholder="Email"><br>
+      <input type="password" name="password" placeholder="Password"><br>
+      <br>
+    </div>
+    <div class="display_inline_button">
+    <input type="submit" value="Create" class ="login_button">
   </form>
+</div>
+
   <br>
   <% if @errors %>
-    <% @errors.each do |message| %>
-      <p><%= message %></p>
-    <% end %>
+  <% @errors.each do |message| %>
+  <p><%= message %></p>
+  <% end %>
   <% end %>
 </div>

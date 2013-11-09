@@ -11,33 +11,51 @@ post '/surveys/new' do
   session[:user_id] = 1 #DELETE THIS AFTER DEBUGGING
   @current_user = User.find(session[:user_id])
 
-  survey_title = params[:survey_title]
+  if request.xhr?
 
-  image_path = params[:image_file_name]
+  else
+    puts "REQUEST:"
+    p request
+    survey_title = params[:survey_title]
 
-  unless image_path.nil? || image_path == ""
-    File.open("" + image_path[:filename], "w") do |f|
-      f.write(image_path[:tempfile].read)
+    image_path = params[:image_file_name]
+
+    unless image_path.nil? || image_path == ""
+      File.open("" + image_path[:filename], "w") do |f|
+        f.write(image_path[:tempfile].read)
+      end
+
+      file_name = image_path[:filename]
     end
 
-    file_name = image_path[:filename]
+    # original
+    # question_prompt = params[:question_0_text]
+    # question_possible_choices_str = params[:question_0_possible_responses]
+    # question_possible_choices = question_possible_choices_str.split("\n")
+
+    new_created_survey = @current_user.created_surveys.create(:title => survey_title, :image_file_name => file_name)
+    # new_question = Question.new(:prompt => question_prompt)
+
+    # question_possible_choices.each do |choice|
+    #   new_possible_choice = PossibleChoice.new(:text => choice.strip)
+    #   new_question.possible_choices << new_possible_choice
+    # end
+    # new_created_survey.questions << new_question
+    # new_created_survey.save
+
+
+    # "psuedocode"
+    params[:question].each do |params_question|
+      question = new_created_survey.questions.create(:prompt => params_question[:text])
+
+      params_question[:possible_responses].split("\n").each do |possible_response|
+        question.possible_choices.create(:text => possible_response)
+      end
+    end
+
+
+    redirect to "/user/#{session[:user_id]}"
   end
-
-  question_prompt = params[:question_0_text]
-  question_possible_choices_str = params[:question_0_possible_responses]
-  question_possible_choices = question_possible_choices_str.split("\n")
-
-  new_created_survey = @current_user.created_surveys.create(:title => survey_title, :image_file_name => file_name)
-  new_question = Question.new(:prompt => question_prompt)
-
-  question_possible_choices.each do |choice|
-    new_possible_choice = PossibleChoice.new(:text => choice.strip)
-    new_question.possible_choices << new_possible_choice
-  end
-  new_created_survey.questions << new_question
-  new_created_survey.save
-
-  redirect to "/user/#{session[:user_id]}"
 end
 
 # Display a list of all surveys

@@ -8,7 +8,6 @@ end
 
 # Save the survey with all its associated questions
 post '/surveys/new' do
-  session[:user_id] = 1 #DELETE THIS AFTER DEBUGGING
   @current_user = User.find(session[:user_id])
 
   if request.xhr?

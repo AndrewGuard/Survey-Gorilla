@@ -1,13 +1,29 @@
 <div class="container">
   <h1>Results for <%= @survey.title %></h1>
-  <ul>
-    <% @questions.each do |question| %>
-      <li><%= question.prompt %></li>
-      <ul>
-        <% question.possible_choices.each do |possible_choice| %>
-          <li><%= possible_choice.text %> --- <%= @all_responses_hash.fetch(possible_choice.id, []).length %></li>
-        <% end %>
-      </ul>
-    <% end %>
-  </ul>
+  <% @questions.each do |question| %>
+  <div class="graph-area">
+    <h3 class="prompt"><%= question.prompt %></h3>
+    <table>
+      <% num_response_for_question = @all_responses_by_question.fetch(question.id, []).length %>
+      <%question.possible_choices.each do |possible_choice|%>
+        <tr style="background-color:#aeaeae;">
+          <td style="width:100px; padding-top: 5px; padding-bottom: 5px">
+            <%= possible_choice.text%>
+          </td>
+          <td style="width: 498px">
+            
+            <% num_responses_for_choice = @all_responses_by_choice.fetch(possible_choice.id, []).length %>
+            <% width_factor = (num_responses_for_choice.to_f/num_response_for_question.to_f)* 100.0 %>
+            <div style="background-color: #6E8B3D; width: <%= width_factor %>%; height: 20px"class="bar"> 
+              <p style="color: black;">
+               <%= num_responses_for_choice %> 
+              </p>
+            </div>
+          </td>
+        </tr>
+      <%end%>
+    </table>
+  </div>
+  <% end %>
 </div>
+
